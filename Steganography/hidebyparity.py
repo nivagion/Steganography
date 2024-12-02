@@ -1,6 +1,5 @@
-#LSB!
-from PIL import Image #we are hiding the message only in Red pixels, for example if first red pixel is even we look at it as a 0, if its odd its 1...
-                      #when we are storing the message, we change value of RED pixels by at most 1, and image looks "almost the same"
+from PIL import Image # hiding the message in red pixels, for example if first red pixel is even we look at it as a 0, if its odd its 1...
+                      # when storing the message, we change value of RED's least significant bit by 1
 
 def hide_message_in_image(image_path, message):
     img = Image.open(image_path)
@@ -11,7 +10,7 @@ def hide_message_in_image(image_path, message):
     for row in range(height):
         for col in range(width):
             pixel = img.getpixel((col, row))
-            r, g, b = pixel[:3]  # only take the first three values, we dont use A in RGBA
+            r, g, b = pixel[:3]  # only take the first three values, we dont use A in RGBA, A is alpha channel, opacity
             if data_index < len(binary_message):
                 bit = binary_message[data_index]
                 r = r - r % 2 + int(bit)

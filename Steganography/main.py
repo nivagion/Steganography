@@ -4,7 +4,7 @@ def main():
     WhatToDo = input("R parity(LSB),")
     image_path = 'image.png'  # put your image name here
 
-    if WhatToDo == 'p':#its called least significant bit apparently lol
+    if WhatToDo == 'p':
         hideor = input("hide-h, decrypt-d")
         if hideor == 'h':
             message = input("input your message:") + '#####'  # add '#####' as the end of the message
